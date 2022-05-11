@@ -1,5 +1,5 @@
 .container {
-    width: 25rem;
+    width: 35rem;
     margin: auto;
     padding: 1rem 1rem 3rem 1rem;
     border-radius: .6rem;
@@ -16,4 +16,10 @@ h1 {
 img {
     height: 8rem;
     margin: auto;
+}
+
+.section {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-evenly;
 }
