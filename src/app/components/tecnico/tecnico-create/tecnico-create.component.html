@@ -15,7 +15,9 @@
             <input 
             [formControl]="nome"
             required
-            matInput placeholder="Ex. Kasino Pereira">
+            matInput placeholder="Ex. Kasino Pereira"
+            maxlength="50"
+            >
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
@@ -24,7 +26,9 @@
             <input 
             [formControl]="cpf"
             required
-            matInput placeholder="Ex. 000.000.000-00">
+            matInput placeholder="Ex. 000.000.000-00"
+            mask="000.000.000-00"
+            >
             <mat-icon matSuffix>pin</mat-icon>
         </mat-form-field>
 
