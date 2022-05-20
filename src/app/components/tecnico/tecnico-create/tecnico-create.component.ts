@@ -40,7 +40,7 @@ export class TecnicoCreateComponent implements OnInit {
   }
 
   create(): void {
-    this.service.create(this.tecnico).subscribe(resposta => {
+    this.service.create(this.tecnico).subscribe(() => {
       this.toastr.success('Técnico cadastrado com sucesso', 'Cadastro');
     }, ex => {
       console.log(ex);
