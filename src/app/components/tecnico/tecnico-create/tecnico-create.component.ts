@@ -34,16 +34,25 @@ export class TecnicoCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid 
-        && this.email.valid && this.senha.valid;
-  }
-
   create(): void {
     this.service.create(this.tecnico).subscribe(() => {
       this.toastr.success('Técnico cadastrado com sucesso', 'Cadastro');
     }, ex => {
       console.log(ex);
     })
+  }
+  
+  addPerfil(perfil: any): void {
+    if(this.tecnico.perfis.includes(perfil)) {
+      this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil), 1);
+    } else {
+      this.tecnico.perfis.push(perfil);
+    }
+
+  }
+
+  validaCampos(): boolean {
+    return this.nome.valid && this.cpf.valid 
+        && this.email.valid && this.senha.valid;
   }
 }
