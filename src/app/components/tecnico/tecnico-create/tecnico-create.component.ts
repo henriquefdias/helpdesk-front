@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Tecnico } from 'src/app/models/tecnico';
 import { TecnicoService } from 'src/app/services/tecnico.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tecnico-create',
@@ -28,7 +29,8 @@ export class TecnicoCreateComponent implements OnInit {
 
   constructor(
     private service: TecnicoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class TecnicoCreateComponent implements OnInit {
   create(): void {
     this.service.create(this.tecnico).subscribe(() => {
       this.toastr.success('Técnico cadastrado com sucesso', 'Cadastro');
+      this.router.navigate(['tecnicos']);
     }, ex => {
       if(ex.error.errors) {
         ex.error.errors.forEach(element => {
