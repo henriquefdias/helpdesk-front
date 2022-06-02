@@ -36,7 +36,7 @@ export class TecnicoUpdateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  create(): void {
+  update(): void {
     this.service.create(this.tecnico).subscribe(() => {
       this.toastr.success('Técnico cadastrado com sucesso', 'Cadastro');
       this.router.navigate(['tecnicos']);
