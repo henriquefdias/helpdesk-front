@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Tecnico } from 'src/app/models/tecnico';
 import { TecnicoService } from 'src/app/services/tecnico.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tecnico-update',
@@ -30,10 +30,18 @@ export class TecnicoUpdateComponent implements OnInit {
   constructor(
     private service: TecnicoService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.tecnico.id = this.route.snapshot.paramMap.get('id');
+  }
+
+  findById(): void {
+    this.service.findById(this.tecnico.id).subscribe(resposta => {
+      this.tecnico = resposta;
+    })
   }
 
   update(): void {
