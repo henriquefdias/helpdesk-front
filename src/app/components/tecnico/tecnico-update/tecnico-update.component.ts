@@ -36,6 +36,7 @@ export class TecnicoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.tecnico.id = this.route.snapshot.paramMap.get('id');
+    this.findById();
   }
 
   findById(): void {
