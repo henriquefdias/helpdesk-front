@@ -47,8 +47,8 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
   update(): void {
-    this.service.create(this.tecnico).subscribe(() => {
-      this.toastr.success('Técnico cadastrado com sucesso', 'Cadastro');
+    this.service.update(this.tecnico).subscribe(() => {
+      this.toastr.success('Técnico atualizado com sucesso', 'Atualização');
       this.router.navigate(['tecnicos']);
     }, ex => {
       if(ex.error.errors) {
