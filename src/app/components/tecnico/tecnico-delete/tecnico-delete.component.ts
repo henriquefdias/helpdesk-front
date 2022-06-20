@@ -21,12 +21,7 @@ export class TecnicoDeleteComponent implements OnInit {
     perfis: [],
     dataCriacao: ''
   }
-
-  nome: FormControl = new FormControl(null, Validators.minLength(3));
-  cpf: FormControl = new FormControl(null, Validators.required);
-  email: FormControl = new FormControl(null, Validators.email);
-  senha: FormControl = new FormControl(null, Validators.minLength(3));
-
+  
   constructor(
     private service: TecnicoService,
     private toastr: ToastrService,
@@ -46,8 +41,8 @@ export class TecnicoDeleteComponent implements OnInit {
     })
   }
 
-  update(): void {
-    this.service.update(this.tecnico).subscribe(() => {
+  delete(): void {
+    this.service.update(this.tecnico.id).subscribe(() => {
       this.toastr.success('Técnico atualizado com sucesso', 'Atualização');
       this.router.navigate(['tecnicos']);
     }, ex => {
@@ -60,18 +55,4 @@ export class TecnicoDeleteComponent implements OnInit {
       }
     })
   }
-  
-  addPerfil(perfil: any): void {
-    if(this.tecnico.perfis.includes(perfil)) {
-      this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil), 1);
-    } else {
-      this.tecnico.perfis.push(perfil);
-    }
-  }
-
-  validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid 
-        && this.email.valid && this.senha.valid;
-  }
-
 }
