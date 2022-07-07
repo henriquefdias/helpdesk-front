@@ -9,7 +9,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Filtre por qualquer uma das colunas" #input>
     </mat-form-field>
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="ELEMENT_DATA">
   
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
