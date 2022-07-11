@@ -8,6 +8,13 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Filtre por qualquer uma das colunas" #input>
     </mat-form-field>
+
+    <mat-radio-group>
+      <mat-radio-button>ABERTO</mat-radio-button>
+      <mat-radio-button>ANDAMENTO</mat-radio-button>
+      <mat-radio-button>ENCERRADO</mat-radio-button>
+    </mat-radio-group>
+
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="ELEMENT_DATA">
   
