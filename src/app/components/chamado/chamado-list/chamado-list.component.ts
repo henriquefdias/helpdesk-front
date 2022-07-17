@@ -39,4 +39,14 @@ export class ChamadoListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  retornaStatus(status: any): string {
+    if (status == '0') {
+      return 'ABERTO'
+    } else if (status == '1') {
+      return 'EM ANDAMENTO'
+    } else {
+      return 'ENCERRADO'
+    }
+  }
+
 }
