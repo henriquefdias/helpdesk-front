@@ -12,6 +12,7 @@ import { ChamadoService } from 'src/app/services/chamado.service';
 export class ChamadoListComponent implements OnInit {
 
   ELEMENT_DATA: Chamado[] = [];
+  FILTERED_DATA: Chamado[] = [];
   
   displayedColumns: string[] = ['id', 'titulo', 'cliente', 'tecnico', 'dataAbertura', 'prioridade', 'status', 'acoes'];
   dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
@@ -57,6 +58,17 @@ export class ChamadoListComponent implements OnInit {
     } else {
       return 'ALTA'
     }
+  }
+
+  orderByStatus(status: any): void {
+    let list: Chamado[] = [];
+    this.ELEMENT_DATA.forEach(element => {
+      if (element.status == status)
+        list.push(element)
+    });
+    this.FILTERED_DATA = list;
+    this.dataSource = new MatTableDataSource<Chamado>(list);
+      this.dataSource.paginator = this.paginator;
   }
 
 }
