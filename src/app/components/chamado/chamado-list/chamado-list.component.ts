@@ -68,7 +68,7 @@ export class ChamadoListComponent implements OnInit {
     });
     this.FILTERED_DATA = list;
     this.dataSource = new MatTableDataSource<Chamado>(list);
-      this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
 }
