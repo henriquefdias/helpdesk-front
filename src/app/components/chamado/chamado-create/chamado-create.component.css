@@ -16,3 +16,12 @@ h1, img {
 img {
     height: 15rem;
 }
+
+.status-prioridade {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-prioridade mat-form-field {
+    width: 49%;
+}
