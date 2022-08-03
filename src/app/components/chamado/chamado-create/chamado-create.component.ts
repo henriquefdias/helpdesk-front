@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-chamado-create',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chamado-create.component.css']
 })
 export class ChamadoCreateComponent implements OnInit {
+
+  prioridade: FormControl = new FormControl(null, [Validators.required])
+  status: FormControl = new FormControl(null, [Validators.required])
+  titulo: FormControl = new FormControl(null, [Validators.required])
+  descricao: FormControl = new FormControl(null, [Validators.required])
+  tecnico: FormControl = new FormControl(null, [Validators.required])
+  cliente: FormControl = new FormControl(null, [Validators.required])
 
   constructor() { }
 
