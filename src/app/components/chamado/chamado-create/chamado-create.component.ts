@@ -31,11 +31,18 @@ export class ChamadoCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAllClientes();
+    this.findAllTecnicos();
   }
 
   findAllClientes(): void {
     this.clienteService.findAll().subscribe(resposta => {
       this.clientes = resposta;
+    })
+  }
+
+  findAllTecnicos(): void {
+    this.tecnicoService.findAll().subscribe(resposta => {
+      this.tecnicos = resposta;
     })
   }
 
