@@ -42,7 +42,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Selecione um cliente</mat-label>
         <mat-select [formControl]="cliente" required>
-          <mat-option value="0">Pereira</mat-option>
+          <mat-option *ngFor="let cli of clientes" value="{{ cli.id }}">{{ cli.nome }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
