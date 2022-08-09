@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Chamado } from 'src/app/models/chamado';
 import { Cliente } from 'src/app/models/cliente';
 import { Tecnico } from 'src/app/models/tecnico';
 import { ChamadoService } from 'src/app/services/chamado.service';
@@ -12,6 +13,17 @@ import { TecnicoService } from 'src/app/services/tecnico.service';
   styleUrls: ['./chamado-create.component.css']
 })
 export class ChamadoCreateComponent implements OnInit {
+
+  chamado: Chamado = {
+    prioridade: '',
+    status: '',
+    titulo: '',
+    descricao: '',
+    tecnico: '',
+    cliente: '',
+    nomeCliente: '',
+    nomeTecnico: ''
+  }
 
   clientes: Cliente[] = [];
   tecnicos: Tecnico[] = [];
