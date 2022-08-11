@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
 import { Cliente } from 'src/app/models/cliente';
 import { Tecnico } from 'src/app/models/tecnico';
@@ -38,12 +40,23 @@ export class ChamadoCreateComponent implements OnInit {
   constructor(
     private chamadoService: ChamadoService,
     private clienteService: ClienteService,
-    private tecnicoService: TecnicoService
+    private tecnicoService: TecnicoService,
+    private toastService: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.findAllClientes();
     this.findAllTecnicos();
+  }
+
+  create(): void {
+    this.chamadoService.create(this.chamado).subscribe(resposta => {
+      this.toastService.success('Chamado criado com sucesso', 'Novo chamado');
+      this.router.navigate(['chamados']);
+    }, ex => {
+      this.toastService.error(ex.error.error);
+    })
   }
 
   findAllClientes(): void {
