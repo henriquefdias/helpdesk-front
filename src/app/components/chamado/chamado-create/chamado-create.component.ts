@@ -20,7 +20,7 @@ export class ChamadoCreateComponent implements OnInit {
     prioridade: '',
     status: '',
     titulo: '',
-    descricao: '',
+    observacoes: '',
     tecnico: '',
     cliente: '',
     nomeCliente: '',
@@ -33,7 +33,7 @@ export class ChamadoCreateComponent implements OnInit {
   prioridade: FormControl = new FormControl(null, [Validators.required])
   status: FormControl = new FormControl(null, [Validators.required])
   titulo: FormControl = new FormControl(null, [Validators.required])
-  descricao: FormControl = new FormControl(null, [Validators.required])
+  observacoes: FormControl = new FormControl(null, [Validators.required])
   tecnico: FormControl = new FormControl(null, [Validators.required])
   cliente: FormControl = new FormControl(null, [Validators.required])
 
@@ -55,6 +55,7 @@ export class ChamadoCreateComponent implements OnInit {
       this.toastService.success('Chamado criado com sucesso', 'Novo chamado');
       this.router.navigate(['chamados']);
     }, ex => {
+      console.log(ex);
       this.toastService.error(ex.error.error);
     })
   }
@@ -73,7 +74,7 @@ export class ChamadoCreateComponent implements OnInit {
 
   validaCampos(): boolean {
     return this.prioridade.valid && this.status.valid &&
-           this.titulo.valid && this.descricao.valid &&
+           this.titulo.valid && this.observacoes.valid &&
            this.tecnico.valid && this.cliente.valid;
   }
 
