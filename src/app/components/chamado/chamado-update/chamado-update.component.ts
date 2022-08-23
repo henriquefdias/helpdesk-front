@@ -16,7 +16,6 @@ import { TecnicoService } from 'src/app/services/tecnico.service';
 })
 export class ChamadoUpdateComponent implements OnInit {
 
-
   chamado: Chamado = {
     prioridade: '',
     status: '',
@@ -51,9 +50,9 @@ export class ChamadoUpdateComponent implements OnInit {
     this.findAllTecnicos();
   }
 
-  create(): void {
-    this.chamadoService.create(this.chamado).subscribe(resposta => {
-      this.toastService.success('Chamado criado com sucesso', 'Novo chamado');
+  update(): void {
+    this.chamadoService.update(this.chamado).subscribe(resposta => {
+      this.toastService.success('Chamado atualizado com sucesso', 'Atualizar chamado');
       this.router.navigate(['chamados']);
     }, ex => {
       console.log(ex);
