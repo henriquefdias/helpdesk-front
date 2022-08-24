@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Chamado } from 'src/app/models/chamado';
 import { Cliente } from 'src/app/models/cliente';
@@ -42,12 +42,22 @@ export class ChamadoUpdateComponent implements OnInit {
     private clienteService: ClienteService,
     private tecnicoService: TecnicoService,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.chamado.id = this.route.snapshot.paramMap.get('id');
     this.findAllClientes();
     this.findAllTecnicos();
+  }
+
+  findById(): void {
+    this.chamadoService.findById(this.chamado.id).subscribe(resposta => {
+      this.chamado = resposta;
+    }, ex => {
+      this.toastService.error(ex.error.error);
+    })
   }
 
   update(): void {
@@ -55,7 +65,6 @@ export class ChamadoUpdateComponent implements OnInit {
       this.toastService.success('Chamado atualizado com sucesso', 'Atualizar chamado');
       this.router.navigate(['chamados']);
     }, ex => {
-      console.log(ex);
       this.toastService.error(ex.error.error);
     })
   }
