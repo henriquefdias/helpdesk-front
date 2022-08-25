@@ -48,6 +48,7 @@ export class ChamadoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.chamado.id = this.route.snapshot.paramMap.get('id');
+    this.findById();
     this.findAllClientes();
     this.findAllTecnicos();
   }
