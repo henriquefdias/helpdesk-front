@@ -31,7 +31,7 @@
 
     <div class="tecnico">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Selecione um técnico</mat-label>
+        <mat-label>{{ chamado.nome }}</mat-label>
         <mat-select [(ngModel)]="chamado.tecnico" name="tecnico" [formControl]="tecnico" required>
           <mat-option *ngFor="let tec of tecnicos" value="{{ tec.id }}">{{ tec.nome }}</mat-option>
         </mat-select>
